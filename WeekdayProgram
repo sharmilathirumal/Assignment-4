@@ -1,0 +1,87 @@
+package WeekDay;
+import java.util.Scanner;
+public class WeekDayProgram {
+public static void main(String[] args) throws ArrayIndexOutOfBoundException {
+	String[] weekDays = new String[]{"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+	Scanner s= new Scanner(System.in);
+	String s1;
+	do {
+		System.out.println("Enter any number between 0 to 6 to know the day of the week");
+		int choice = s.nextInt();
+		try {
+			if(choice>6||choice<0) {
+				throw new ArrayIndexOutOfBoundException("Invalid Index...\n Please enter number between 0 to 6");
+			}
+			else {
+				System.out.println("the week day is:"+weekDays[choice]);
+			}
+		}catch (ArrayIndexOutOfBoundException e) {
+			System.out.println("the Error:"+e.getMessage());
+		}
+				
+		System.out.println("you want to continue?");
+		 s1 =s.next();
+	}while (s1.equals("yes"));
+	
+}
+}
+
+
+class ArrayIndexOutOfBoundException extends Exception{
+	public ArrayIndexOutOfBoundException(String message) {
+		super(message);
+	}
+}
+OUTPUT:
+Enter any number between 0 to 6 to know the day of the week
+0
+the week day is:Sunday
+you want to continue?
+yes
+Enter any number between 0 to 6 to know the day of the week
+1
+the week day is:Monday
+you want to continue?
+yes
+Enter any number between 0 to 6 to know the day of the week
+2
+the week day is:Tuesday
+you want to continue?
+yes
+Enter any number between 0 to 6 to know the day of the week
+3
+the week day is:Wednesday
+you want to continue?
+yes
+Enter any number between 0 to 6 to know the day of the week
+4
+the week day is:Thursday
+you want to continue?
+yes
+Enter any number between 0 to 6 to know the day of the week
+5
+the week day is:Friday
+you want to continue?
+yes
+Enter any number between 0 to 6 to know the day of the week
+6
+the week day is:Saturday
+you want to continue?
+yes
+Enter any number between 0 to 6 to know the day of the week
+7
+the Error:Invalid Index...
+ Please enter number between 0 to 6
+you want to continue?
+yes
+Enter any number between 0 to 6 to know the day of the week
+9
+the Error:Invalid Index...
+ Please enter number between 0 to 6
+you want to continue?
+yes
+Enter any number between 0 to 6 to know the day of the week
+1
+the week day is:Monday
+you want to continue?
+no
