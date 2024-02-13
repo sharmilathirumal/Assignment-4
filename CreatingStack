@@ -1,0 +1,181 @@
+package StackByJava;
+import java.util.Scanner;
+public class StackDataStructure {
+	int[] stackArray;
+	int top;
+	int maximumSize;
+	
+	StackDataStructure(int size){
+		this.maximumSize =size;
+		stackArray = new int[maximumSize];
+		top =-1;
+	}
+	
+	public void Push(int value) {
+		if(top == maximumSize -1) {
+			System.out.println("Stack Overflow ,we can't push this element"+" "+value+" "+" onto the stack");
+		}
+		else {
+			stackArray[++top] =value;
+			System.out.println("Pushed element:"+" "+value);
+		}
+	}
+	
+	public void Pop() {
+		if(isEmpty()) {
+			System.out.println("Stack Underflow.....,\n there no element in this stack..");
+		}
+		else {
+			int popedElement  = stackArray[top--];
+			System.out.println("the element which popped is:"+" "+popedElement);
+		}
+	}
+	
+	public void Peek() {
+		if(isEmpty()) {
+			System.out.println("there is no element in this stack");
+		}else
+		System.out.println("the top element of the stack is:"+" "+stackArray[top]);
+	}
+	
+	public boolean isEmpty() {
+		if(top ==-1) {
+			return true;
+		}else return false;
+	}
+	
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the stack size:");
+		int stackValue = s.nextInt();
+		StackDataStructure newStack = new StackDataStructure(stackValue);
+		String val;
+		do {
+			System.out.println("these are the operations we can do using stack:\n1.Push\n2.Pop\n3.Peek\n4.isEmpty");
+			int choice = s.nextInt();
+			switch(choice) {
+			case 1:
+				System.out.println("Enter the element to push into the stack:");
+				int element = s.nextInt();
+				newStack.Push(element);
+				break;
+			
+			case 2:
+				newStack.Pop();
+				break;
+			case 3:
+				newStack.Peek();
+				break;
+			case 4:
+				System.out.println("is this Stack Empty?"+" "+newStack.isEmpty());
+				break;
+			}
+			System.out.println("do you want to continue?:");
+			 val = s.next();
+		}while(val.equals("yes"));
+	}
+}
+
+
+OUTPUT:
+Enter the stack size:
+3
+these are the operations we can do using stack:
+1.Push
+2.Pop
+3.Peek
+4.isEmpty
+3
+there is no element in this stack
+do you want to continue?:
+yes
+these are the operations we can do using stack:
+1.Push
+2.Pop
+3.Peek
+4.isEmpty
+4
+is this Stack Empty? true
+do you want to continue?:
+yes
+these are the operations we can do using stack:
+1.Push
+2.Pop
+3.Peek
+4.isEmpty
+2
+Stack Underflow.....,
+ there no element in this stack..
+do you want to continue?:
+yes
+these are the operations we can do using stack:
+1.Push
+2.Pop
+3.Peek
+4.isEmpty
+1
+Enter the element to push into the stack:
+1
+Pushed element: 1
+do you want to continue?:
+yes
+these are the operations we can do using stack:
+1.Push
+2.Pop
+3.Peek
+4.isEmpty
+1
+Enter the element to push into the stack:
+2
+Pushed element: 2
+do you want to continue?:
+yes
+these are the operations we can do using stack:
+1.Push
+2.Pop
+3.Peek
+4.isEmpty
+1
+Enter the element to push into the stack:
+3
+Pushed element: 3
+do you want to continue?:
+yes
+these are the operations we can do using stack:
+1.Push
+2.Pop
+3.Peek
+4.isEmpty
+1
+Enter the element to push into the stack:
+4
+Stack Overflow ,we can't push this element 4  onto the stack
+do you want to continue?:
+yes
+these are the operations we can do using stack:
+1.Push
+2.Pop
+3.Peek
+4.isEmpty
+2
+the element which popped is: 3
+do you want to continue?:
+yes
+these are the operations we can do using stack:
+1.Push
+2.Pop
+3.Peek
+4.isEmpty
+3
+the top element of the stack is: 2
+do you want to continue?:
+yes
+these are the operations we can do using stack:
+1.Push
+2.Pop
+3.Peek
+4.isEmpty
+4
+is this Stack Empty? false
+do you want to continue?:
+NO
