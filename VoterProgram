@@ -1,0 +1,88 @@
+package VoterManagementSystem;
+
+public class Voter {
+
+		int voterId;
+		String name;
+		int age;
+				
+		public Voter(int voter_id,String voter_name,int voter_age) throws VoterException {
+			if(voter_age<18) {
+				throw new VoterException("invalid age for voter");
+			}
+			this.voterId =voter_id;
+			this.name =voter_name;
+			this.age = voter_age;
+		}
+}
+
+package VoterManagementSystem;
+import java.util.*;
+public class VoterDetails {
+	static int id =1;
+public static void main(String[] args) {
+	Scanner s= new Scanner(System.in);
+	System.out.println("*****WELCOME******");
+	System.out.println("do you want to add the person in voter list");
+	String s1= s.next();
+	do {
+		if(s1.equals("yes")) {
+			System.out.println("Enter the voter name:");
+			String name =s.nextLine();
+			s.nextLine();
+			System.out.println("Enter the voter age:");
+			int age = s.nextInt();
+			
+		try {
+			new Voter(id,name,age);
+		}catch(VoterException e) {
+			System.out.println("Error:"+e.getMessage());
+		}
+		}
+		id++;
+		System.out.println("you want to continue:");
+		s1=s.next();
+		
+	}while(s1.equals("yes"));
+	
+}
+}
+
+package VoterManagementSystem;
+
+public class VoterException extends Exception{
+	public VoterException(String message) {
+		super(message);
+	}
+}
+
+
+OUTPUT:
+*****WELCOME******
+do you want to add the person in voter list
+yes
+Enter the voter name:
+sharmi
+Enter the voter age:
+21
+you want to continue:
+yes
+Enter the voter name:
+ishu
+Enter the voter age:
+12
+Error:invalid age for voter
+you want to continue:
+yes
+Enter the voter name:
+naveena
+Enter the voter age:
+23
+you want to continue:
+yes
+Enter the voter name:
+tanya
+Enter the voter age:
+13
+Error:invalid age for voter
+you want to continue:
