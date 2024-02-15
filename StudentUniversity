@@ -1,0 +1,117 @@
+package StundentManagementForUniversity;
+import java.util.*;
+public class AddStudentDetails {
+	static int rollNumber =1;
+	static int nameCount;
+	static int ageCount;
+public static void main(String[] args) {
+	Scanner s = new Scanner(System.in);
+	System.out.println("do you want to add the student details");
+	String choice = s.next();
+	if(choice .equals("yes")) {
+		String name="";
+		int age;
+		List<Student> list = new ArrayList<>();
+		do {
+			nameCount =0;
+			ageCount =0;
+			System.out.println("please enter the student Name:");
+				 name =s.next();
+				try {
+					ValidateName(name);
+				}catch(NameNotValidException e) {
+					System.out.println("Error message:" +e.getMessage());
+				}
+			System.out.println("please enter the student Age:");
+			 age = s.nextInt();
+			 try {
+				 ValidateAgeRange(age);
+			 }catch (AgeNotWithinRangeException e) {
+				System.out.println("Error message:"+e.getMessage());
+			}
+			 if(nameCount ==0 && ageCount ==0) {
+				 list.add(new Student(rollNumber,name,age));
+					rollNumber++;
+			 }
+			System.out.println("do you wanto to continue:?");
+			choice =s.next();
+		} while(choice.equals("yes"));
+		
+		System.out.println("The student list is:");
+		for(int i =0;i<list.size();i++) {
+			System.out.println("Roll no:"+" "+":"+" "+list.get(i).rollNumber);
+			System.out.println("Student name"+" "+":"+" "+list.get(i).name);
+			System.out.println("Student age"+" "+":"+" "+list.get(i).age);
+		}
+	}
+	
+}
+
+public static void ValidateName(String name) throws NameNotValidException {
+	if(name.matches("^[a-zA-Z]+$")) {
+		
+	}
+	else{
+		nameCount ++;
+		throw new NameNotValidException("the given student name is not valid....\n it contains number or special charecter\nplease enter valid name");
+	}
+}
+	public static void ValidateAgeRange(int age) throws AgeNotWithinRangeException {
+		if(age<15||age>21) {
+			ageCount ++;
+			throw new AgeNotWithinRangeException("the student age should be between 15 and 21...\n please enter valid age of the student");
+		}
+	}
+
+}
+
+OUTPUT:
+do you want to add the student details
+yes
+please enter the student Name:
+Andrill1
+Error message:the given student name is not valid....
+ it contains number or special charecter
+please enter valid name
+please enter the student Age:
+22
+Error message:the student age should be between 15 and 21...
+ please enter valid age of the student
+do you wanto to continue:?
+yes
+please enter the student Name:
+Mozhi
+please enter the student Age:
+26
+Error message:the student age should be between 15 and 21...
+ please enter valid age of the student
+do you wanto to continue:?
+yes
+please enter the student Name:
+Pani!
+Error message:the given student name is not valid....
+ it contains number or special charecter
+please enter valid name
+please enter the student Age:
+19
+do you wanto to continue:?
+yes
+please enter the student Name:
+Naveena
+please enter the student Age:
+18
+do you wanto to continue:?
+yes
+please enter the student Name:
+Sharmi
+please enter the student Age:
+19
+do you wanto to continue:?
+no
+The student list is:
+Roll no: : 1
+Student name : Naveena
+Student age : 18
+Roll no: : 2
+Student name : Sharmi
+Student age : 19
