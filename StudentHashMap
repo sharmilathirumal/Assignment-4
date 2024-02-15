@@ -1,0 +1,156 @@
+package StudHasMap;
+import java.util.*;
+public class HasMapForStudent {
+			public static Map<String,Integer> studentDetails = new HashMap<>();
+			public static void main(String[] args) {
+				Scanner s  =new Scanner(System.in);
+				String wantToContinue;
+				do {
+					System.out.println("enter your choice \n1.add a student \n2.remove a student \n3.Display a student");
+					int choice = s.nextInt();
+					switch(choice) {
+					case 1:{	
+						System.out.println("Enter student name");
+						String name = s.next();
+						System.out.println("Enter student grade");
+						int grade = s.nextInt();
+						AddNewStudent(name,grade);
+						break;
+					}
+					case 2:{
+						System.out.println("the student details is:");
+						DisplayStudentDetails();
+						System.out.println("Enter student name :");
+						String name = s.next();
+						System.out.println("Enter the student grade");
+						int grade =s.nextInt();
+						RemoveStudent(name,grade);
+						break;
+					}
+					case 3:
+						System.out.println("available student list:");
+						DisplayStudentDetails();
+						break;
+					case 4:
+						break;
+					}
+					System.out.println("do you want to continue");
+					wantToContinue = s.next();
+				}while(wantToContinue.equals("yes"));
+			}
+			
+			public static void AddNewStudent(String name,int grade) {
+				studentDetails.put(name, grade);
+			}
+			
+			public static void RemoveStudent(String removeName,int removeGrade) {
+						studentDetails.remove(removeName,removeGrade);
+			}
+			
+			public static void DisplayStudentDetails() {
+				for (Map.Entry<String, Integer> e : studentDetails.entrySet()) {
+					 System.out.println("Student name:"+e.getKey());
+		               System.out.println("Student grade:"+e.getValue());
+				}
+			}
+	
+
+}
+
+OUTPUT:
+enter your choice 
+1.add a student 
+2.remove a student 
+3.Display a student
+1
+Enter student name
+sharmila
+Enter student grade
+1
+do you want to continue
+yes
+enter your choice 
+1.add a student 
+2.remove a student 
+3.Display a student
+1
+Enter student name
+naveena
+Enter student grade
+2
+do you want to continue
+yes
+enter your choice 
+1.add a student 
+2.remove a student 
+3.Display a student
+1
+Enter student name
+ishu
+Enter student grade
+3
+do you want to continue
+yes
+enter your choice 
+1.add a student 
+2.remove a student 
+3.Display a student
+1
+Enter student name
+tharika
+Enter student grade
+7
+do you want to continue
+yes
+enter your choice 
+1.add a student 
+2.remove a student 
+3.Display a student
+3
+available student list:
+Student name:ishu
+Student grade:3
+Student name:naveena
+Student grade:2
+Student name:sharmila
+Student grade:1
+Student name:tharika
+Student grade:7
+do you want to continue
+yes
+enter your choice 
+1.add a student 
+2.remove a student 
+3.Display a student
+2
+the student details is:
+Student name:ishu
+Student grade:3
+Student name:naveena
+Student grade:2
+Student name:sharmila
+Student grade:1
+Student name:tharika
+Student grade:7
+Enter student name :
+ishu
+Enter the student grade
+3
+do you want to continue
+yes
+enter your choice 
+1.add a student 
+2.remove a student 
+3.Display a student
+3
+available student list:
+Student name:naveena
+Student grade:2
+Student name:sharmila
+Student grade:1
+Student name:tharika
+Student grade:7
+do you want to continue
+
+
+
